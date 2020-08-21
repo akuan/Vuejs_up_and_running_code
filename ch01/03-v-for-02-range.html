@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Template Data and Directive</title>
+</head> 
+<body>  
+    <div id="app"> 
+        <h1>Chapter 1</h1>
+        <ul>
+          <li v-for=" n in 10">
+              {{n}}
+          </li>
+        </ul>    
+    </div>
+    <script>
+        new Vue({
+            el: '#app'            
+        });
+
+    </script> 
+</body>
+</html>

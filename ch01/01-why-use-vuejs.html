@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.1-beta3/mock-min.js"></script>
-    <title>Vue.js Up & Running</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+    <title>Why choose vue.js</title>
 </head>
 
 <body>
@@ -17,10 +16,7 @@
         <li v-for="item in items" :class="{ 'is-blue': item.includes('blue') }">
             {{ item }}</li>
     </ul>
-    <script>  
-       Mock.mock('/items', {
-                'items': ['red','yellow','blue']
-            });
+    <script>   
         new Vue({
             el: '.js-items',
             data: {
@@ -29,9 +25,7 @@
             created() {
                 var url = 'http://localhost:3000/items'
                 //fetch('https://example.com/items.json')
-                fetch(url, {
-                    headers: {'origin': 'localhost','no-cors':'no-cors'}
-                }).then((res) => res.json())
+                fetch(url).then((res) => res.json())
                     .then((data) => {
                         console.log(`data is ${data}`)
                         this.items = data.items;
