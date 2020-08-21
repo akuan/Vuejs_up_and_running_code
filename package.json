@@ -1,0 +1,23 @@
+{
+  "name": "vuejs_up_and_running_code",
+  "version": "1.0.0",
+  "description": "《Vue.js快跑：构建触手可及的高性能Web应用》示例代码\r 1. 从《Vue.js快跑：构建触手可及的高性能Web应用》书中抄录的代码，仅做本人学习练习使用，不对项目的完整性负责。\r 2. 代码均从原书中抄录，仅添加必要的html容器部分，尽量使代码片段可独立运行。\r 3. \r # 引用项目\r 1. Drozerah/VueJS-up-and-running  https://github.com/Drozerah/VueJS-up-and-running\r 2. freebz/Vue.js-Up-and-Running  https://github.com/freebz/Vue.js-Up-and-Running",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mock": "json-server --watch mock/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akuan/Vuejs_up_and_running_code.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akuan/Vuejs_up_and_running_code/issues"
+  },
+  "homepage": "https://github.com/akuan/Vuejs_up_and_running_code#readme",
+  "dependencies": {
+    "mock": "^0.1.1"
+  }
+}
