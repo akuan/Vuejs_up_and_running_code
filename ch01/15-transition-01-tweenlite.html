@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+  <title>transition use TweenLite</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Chapter 1</h1>
+    <button @click="divVisible = !divVisible">切换可见性</button>
+    <transition
+    v-on:before-enter="handleBeforeEnter"
+    v-on:enter="handleEnter"
+    v-on:leave="handleLeave">
+    <div v-if="divVisible">本段内容时而隐藏时而可见</div>
+    </transition>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          divVisible: true
+        }
+      },
+      methods: {
+        handleBeforeEnter(sender) {
+          console.log("handleBeforeEnter")
+          sender.style.opacity = 0;
+        },
+        handleEnter(sender, done) {
+          console.log("handleEnter")
+          TweenLite.to(sender, 0.6, { opacity: 0.85, onComplete: done });
+        },
+        handleLeave(sender, done) {
+          console.log("handleLeave")
+          TweenLite.to(sender, 0.6, { opacity: 0.15, onComplete: done });
+        }
+      }
+    });
+  </script> 
+</body>
+
+</html>

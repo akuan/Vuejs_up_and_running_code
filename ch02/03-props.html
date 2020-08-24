@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>props</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Chapter 2</h1> 
+        <color-preview color="red"></color-preview> 
+        <color-preview color="blue"></color-preview> 
+    </div>
+    <script>
+      Vue.component('color-preview',{
+        template:'<div class="color-preview" :style="style">...</div>',
+        props:['color'],
+         
+        computed:{
+          style(){
+            return {backgroundColor:this.color};
+          }
+        }
+      }); 
+        new Vue({
+            el: '#app' 
+        });
+
+    </script>
+</body>
+
+</html>

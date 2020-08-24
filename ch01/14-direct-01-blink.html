@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>directiv</title>
+</head>
+
+<body>
+    <div id="app">
+      <h1>Chapter 1</h1>
+      <p v-blink="600">本段内容会闪烁</p> 
+    </div>
+    <script>
+      Vue.directive('blink',{
+        bind(el,binding){
+          let isVisible=true;
+          setInterval(()=>{
+            isVisible=!isVisible;
+            el.style.visibility=isVisible?'visible':'hidden';
+          },binding.value||1000)
+        }
+      })
+        new Vue({
+            el: '#app'             
+        });
+
+    </script>
+</body>
+
+</html>

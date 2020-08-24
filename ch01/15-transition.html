@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>transition</title>
+</head>
+
+<body>
+    <div id="app">
+      <h1>Chapter 1</h1> 
+      <button @click="divVisible = !divVisible">切换可见性</button>
+      <transition name="fade">
+      <div v-if="divVisible">本段内容时而隐藏时而可见</div>
+    </transition>
+    </div>
+    <script>
+       
+        new Vue({
+            el: '#app' ,
+            data(){
+              return{
+                divVisible:true
+              }
+            }            
+        });
+
+    </script>
+    <style>
+      .fade-enter-active,.fade-leave-active {
+        transition: opacity 0.5s;
+      }
+      .fade-enter,.fade-leave-to {
+        opacity: 0;
+      }
+    </style>
+</body>
+
+</html>
