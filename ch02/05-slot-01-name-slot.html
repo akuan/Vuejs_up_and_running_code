@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>named slot</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Chapter 2</h1>
+    <blog-post :author="pauthor">
+      <h2 slot="header">道德经</h2>
+      <p>道可道非常道</p>
+      <p>名可名，非常名</p>
+    </blog-post>
+  </div>
+  <script>
+    Vue.component('blog-post', {
+      template: `<section class="blog-post">
+  <header>
+    <slot name="header"></slot>
+    <p>作者 {{author.name }}  </p>
+  </header>
+
+  <main>
+    <slot></slot>
+  </main>
+</section>`,
+      props: {
+        author: Object
+      }
+    });
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          pauthor: {
+            name: '老聃'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

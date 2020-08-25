@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>props</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Chapter 2</h1> 
+    <count-from-number :number.sync="numberToDisplay"></count-from-number> 
+    <p> numberToDisplay: {{ numberToDisplay }} </p>
+  </div>
+  <script>
+    Vue.component('count-from-number', {
+      template: '<p>当前的数字是{{localNumber}}</p>',
+      props: {
+        number: {
+          type: Number,
+          required: true,
+        }
+      },
+      computed: {
+        localNumber:{
+          get(){
+            return this.number;
+          },
+          set(value){
+            this.$emit('update:number',value);
+          }
+        }
+      },
+      mounted(){
+        setInterval(()=>{
+          this.localNumber++;
+        },1000);
+      }
+    });
+    new Vue({
+      el: '#app',
+      data:{
+        numberToDisplay:0
+      } 
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>props</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Chapter 2</h1> 
+        <price-display price="100" percentage-discount="20%"></price-display> 
+        <price-display price="100" unit="￥"></price-display> 
+    </div>
+    <script>
+      Vue.component('price-display',{
+        template:'<div class="price-display" >{{unit}}:{{price}}</div>',
+        props:{
+          percentageDiscount:Number,
+          price:{
+            type:Number,
+            required: true,
+            validator(value){
+              return value >= 0;
+            }
+          },
+          unit: {
+            type: String,
+            default: '$'
+          }
+        } 
+      }); 
+        new Vue({
+            el: '#app' 
+        });
+
+    </script>
+</body>
+
+</html>
