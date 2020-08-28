@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>scoped slot</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Chapter 2</h1>
+    <div>
+      <!--
+        <user-data slot-scope="user">
+        <p v-if="user">用户名：{{user.name}}</p>
+      </user-data>
+      --> 
+      <!--
+        <user-data>         
+          {{ user.name }}        
+      </user-data> 
+      -->
+      <user-data>
+        <template v-slot:default="slotProps">
+          作者 ：{{ slotProps.user.name }}
+        </template>
+      </user-data>
+    </div>
+  </div>
+  <script>
+    const user = {
+        name: '老聃'
+      }
+    Vue.component('user-data', { 
+      template: `<div class="user"><slot :user="user"></slot></div>`,
+      data:()=>( {
+        user:{}
+      }),
+      mounted(){
+        // 设置 this.user
+        this.user=user
+      }
+    });
+    new Vue({
+      el: '#app', 
+    });
+  </script>
+</body>
+
+</html>

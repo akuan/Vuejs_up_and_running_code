@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>scoped slot</title>
+</head>
+
+<body>
+  <div id="app">
+    
+  </div>
+  <script> 
+     const events=new Vue();
+     let count=0;
+     function logCount(){
+       count++;
+       console.log(`调试函数执行了${count}次`);
+     }
+     events.$on('test-event',logCount);
+     setInterval(()=>{
+       events.$emit('test-event');
+     },1000);
+     setTimeout(() => {
+       console.log('调试事件处理函数移除')
+       events.$off('test-event');
+     }, 10000);
+  </script>
+</body>
+
+</html>

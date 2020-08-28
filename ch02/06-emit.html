@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>scoped slot</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Chapter 2</h1>
+    <div> 
+        <counter @count="docount"></counter>
+        <div>触发了{{counts}}次 </div>
+    </div>
+  </div>
+  <script> 
+    Vue.component('counter', { 
+      template: `<button @click="handleClick">单击了{{clicks}}次</button>`,
+      data:()=>( {
+        clicks:0
+      }),
+      methods:{ 
+        handleClick(){
+          this.clicks++;
+          this.$emit('count',this.clicks);
+        }
+      }
+    });
+    new Vue({
+      el: '#app', 
+      data(){
+        return {
+          counts:0
+        }
+      },
+      methods:{
+        docount(newCount){
+          this.counts=newCount
+        },
+      }
+    });
+  </script>
+</body>
+
+</html>

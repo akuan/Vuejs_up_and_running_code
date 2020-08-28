@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>props overrite</title>
+</head>
+
+<body>
+  <div id="app">
+     <custom-button type="submit">单击我！</custom-button>
+  </div>
+  <script type="module">  
+  const CustomButton= Vue.component('CustomButton', {
+    template:'<button type="button"><slot></slot></button>'
+  });
+   
+    new Vue({
+      el: '#app', 
+      component:{
+        CustomButton
+      }
+    });
+  </script>
+</body>
+
+</html>

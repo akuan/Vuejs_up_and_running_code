@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>key in v-for</title>
+</head>
+
+<body>
+  <div id="app">
+      <demo-key v-for="(item,i) in items" @click.native="items.splice(i,1)" :key="item">
+        {{item}}
+      </demo-key>
+  </div>
+  <script type="module">  
+   const randomColor=()=>`hsl(${Math.floor(Math.random()*360)},75%,85%)`;
+   Vue.component("demo-key",{
+     template:`<p :style="{backgroundColor:color}"><slot></slot></p>`,
+     data:()=>({
+       color:randomColor()
+     })
+   });
+    new Vue({
+      el: '#app', 
+      data:()=>({items:['one','two','three','four','five']}),
+    });
+  </script>
+</body>
+
+</html>

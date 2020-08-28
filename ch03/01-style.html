@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>style </title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <h1>ch3</h1>
+        <div 
+          v-for="n in 12"
+          class="color"
+          :style="{backgroundColor:getColor(n)}"> {{n}}
+        </div>
+    </div>
+    <script>
+	new Vue({
+    el: '#app',
+   methods:{
+     getColor(n){
+       return `hsl(${(n-1)*30},100%,75%)`;
+     }
+   }
+    })
+  </script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</body>
+</html>

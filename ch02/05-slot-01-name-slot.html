@@ -14,7 +14,9 @@
   <div id="app">
     <h1>Chapter 2</h1>
     <blog-post :author="pauthor">
-      <h2 slot="header">道德经</h2>
+      <template v-slot:header>
+        <h2>道德经</h2>
+      </template> 
       <p>道可道非常道</p>
       <p>名可名，非常名</p>
     </blog-post>

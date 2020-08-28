@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>scoped slot</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Chapter 2</h1>
+    <div> 
+        <usr-amind userId="1"></usr-amind>
+    </div>
+  </div>
+  <script type="module"> 
+  import userMixin from './mixins/user';
+    Vue.component('usr-admin', {
+      mixins:[userMinx], 
+      template: `<div v-if="user">姓名:{{user.name}}</div>`,
+      props:{
+        userId:{
+          type:Number
+        }
+      },
+      data: () => ({
+        user: undefined
+      }),
+      mounted(){ 
+        this.getUserInformation(this.userId)
+        .then((user)=>{
+          console.log(`user is ${JSON.stringify(user)}`)
+          this.user=user;
+        });
+      }
+    });
+    new Vue({
+      el: '#app', 
+      component:[usr-amind] 
+    });
+  </script>
+</body>
+
+</html>
